@@ -4,7 +4,7 @@
 ## 使い方
 実行環境はWindows 10を想定しています
 
-1. Releases から `imascs.exe.zip` をダウンロード
+1. [Releases](https://github.com/ogukei/cinderella-screen/releases) から `imascs.exe.zip` をダウンロード
 1. `imascs.exe` を実行
 1. Fullscreen (F11) でフルスクリーンに変更
 3. Desktop Wallpaper (F10) で壁紙モードに変更
