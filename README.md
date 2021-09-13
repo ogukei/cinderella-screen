@@ -19,7 +19,12 @@ F9もしくはAlt+Tabでフルスクリーンから抜け出せます
     1. see https://code.visualstudio.com/docs/cpp/config-msvc
 1. Install Windows 10 SDK 10.0.19041.0 via Build Tools for Visual Studio 2019
 1. Open Developer PowerShell for VS 2019
-1. Run `cd <this-repository-folder>`
-1. Run `cmake .. -G "Visual Studio 16 2019" -A x64`
-1. Run `cmake --build . --config Release`
-1. Run `Release/imascs.exe`
+1. Run the following commands
+```
+cd <this-repository-folder>
+mkdir build
+cd build
+cmake .. -G "Visual Studio 16 2019" -A x64
+cmake --build .
+Debug/imascs.exe
+```
