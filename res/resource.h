@@ -1,0 +1,9 @@
+
+#define IDI_ICON1 103
+
+#define IDC_NOTIFICATIONICON 208
+
+#define IDM_ACTION1 121
+#define IDM_ACTION2 122
+#define IDM_ACTION3 123
+#define IDM_EXIT 124

@@ -1,0 +1,39 @@
+
+#include "resource.h"
+
+IDI_ICON1 ICON DISCARDABLE "icon.ico"
+
+1 VERSIONINFO
+FILEVERSION ${UI_VERSION_MAJOR},${UI_VERSION_MINOR},${UI_VERSION_PATCH},0
+BEGIN
+  BLOCK "StringFileInfo"
+  BEGIN
+    BLOCK "040904B0"
+    BEGIN
+      VALUE "FileDescription", "${PROJECT_NAME}"
+      VALUE "FileVersion", "${UI_VERSION}"
+      VALUE "InternalName", "${PROJECT_NAME}"
+      VALUE "OriginalFilename", "${PROJECT_NAME}"
+      VALUE "ProductName", "${PROJECT_NAME}"
+      VALUE "ProductVersion", "${UI_VERSION}"
+      VALUE "Comments", "CGSS Fullscreen"
+    END
+  END
+
+  BLOCK "VarFileInfo"
+  BEGIN
+    VALUE "Translation", 0x0409, 0x04B0
+  END
+END
+
+IDC_NOTIFICATIONICON MENU
+BEGIN
+    POPUP "&Menu"
+    BEGIN
+	    MENUITEM "Fullscreen",        IDM_ACTION1
+      MENUITEM "Desktop Wallpaper", IDM_ACTION2
+      MENUITEM "Default",           IDM_ACTION3
+		MENUITEM SEPARATOR
+        MENUITEM "E&xit",           IDM_EXIT
+    END
+END
