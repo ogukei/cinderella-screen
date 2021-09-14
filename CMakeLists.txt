@@ -15,9 +15,13 @@ target_include_directories(${PROJECT_NAME}
     PRIVATE src
     PRIVATE res)
 
+# subdirectories
+add_subdirectory(src/core)
+add_subdirectory(src/capture)
+
 # compiler options
 target_compile_features(${PROJECT_NAME} PRIVATE cxx_std_17)
-#target_link_libraries(${PROJECT_NAME} PRIVATE "windowsapp.lib")
+target_link_libraries(${PROJECT_NAME} PRIVATE imascs.core imascs.capture windowsapp D3D11)
 
 # UAC requireAdministrator configured via ui.manifest
 set_target_properties(${PROJECT_NAME} PROPERTIES LINK_FLAGS
@@ -53,6 +57,5 @@ elseif(WINAPI_VER_MAJOR GREATER 10)
     set(WINAPI_COMPATIBLE TRUE)
 endif()
 if(NOT WINAPI_COMPATIBLE)
-# compatible at the moment
-#    message(FATAL_ERROR "Requires Windows 10 SDK 10.0.19041.0 or above")
+    message(FATAL_ERROR "Requires Windows 10 SDK 10.0.19041.0 or above")
 endif()

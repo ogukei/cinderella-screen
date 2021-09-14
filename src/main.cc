@@ -65,6 +65,8 @@ static bool DispatchCommandActions(HWND hwnd, WORD word) {
   case IDM_ACTION3:
     imascs::MakeTargetAppDefault();
     break;
+  case IDM_ACTION4:
+    break;
   default:
     return false;
   }

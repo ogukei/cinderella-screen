@@ -7,6 +7,9 @@
 #include "window_helper.h"
 #include "fullscreen.h"
 
+#include "core/winrt_context.h"
+#include "capture/capture.h"
+
 namespace imascs {
 
 void MakeTargetAppForeground() {
@@ -46,6 +49,14 @@ void MakeTargetAppDefault() {
   ConfigureBorderless(window);
   ConfigureDefaultWindow(window);
   ConfigureDefaultBorder(window);
+}
+
+void SnapshotTargetAppWindow() {
+  DWORD pid = FindProcessIDByName(IMASCS_TARGET_PROCESS_NAME);
+  if (pid == 0) return;
+  HWND window = FindMainWindow(pid);
+  if (window == NULL) return;
+  imascs::capture::CaptureFoo(core::WinRTContext::Instance(), window);
 }
 
 }  // namespace imascs

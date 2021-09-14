@@ -28,6 +28,9 @@ static bool IsTargetWindowActive() {
 
 static void DispatchActions(DWORD vkCode) {
   switch (vkCode) {
+  case VK_F12:
+    SnapshotTargetAppWindow();
+    break;
   case VK_F11:
     MakeTargetAppFullscreen();
     break;
@@ -44,6 +47,7 @@ LRESULT CALLBACK HookProc(int nCode, WPARAM wParam, LPARAM lParam) {
   LPKBDLLHOOKSTRUCT hook = (LPKBDLLHOOKSTRUCT)lParam;
   if (wParam == WM_KEYDOWN && nCode == HC_ACTION) {
     switch (hook->vkCode) {
+    case VK_F12:
     case VK_F11:
     case VK_F10:
     case VK_F9:
