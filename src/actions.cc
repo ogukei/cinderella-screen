@@ -56,7 +56,9 @@ void SnapshotTargetAppWindow() {
   if (pid == 0) return;
   HWND window = FindMainWindow(pid);
   if (window == NULL) return;
-  imascs::capture::CaptureFoo(core::WinRTContext::Instance(), window);
+  auto& winrt_context = core::WinRTContext::Instance();
+  auto& capture_facade = imascs::capture::CaptureFacade::Instance(winrt_context);
+  capture_facade.SnapshotWindow(window);
 }
 
 }  // namespace imascs

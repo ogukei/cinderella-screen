@@ -16,7 +16,7 @@ class WinRTContext {
   static WinRTContext& Instance();
 
 #ifdef _DEBUG
-  void RunDebug(const std::function<void(void)> &func);
+  void RunDebug(const std::function<void(void)>& func);
 #endif
 };
 
