@@ -41,6 +41,7 @@ class CaptureFacade {
   static CaptureFacade& Instance(const imascs::core::WinRTContext& context);
 
   winrt::fire_and_forget SnapshotWindow(HWND hwnd);
+  winrt::fire_and_forget LaunchScreenshotFolder();
 };
 
 }  // namespace capture

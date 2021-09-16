@@ -67,6 +67,10 @@ static bool DispatchCommandActions(HWND hwnd, WORD word) {
     imascs::MakeTargetAppDefault();
     break;
   case IDM_ACTION4:
+    imascs::SnapshotTargetAppWindow();
+    break;
+  case IDM_HELP1:
+    imascs::LaunchScreenshotFolder();
     break;
   default:
     return false;

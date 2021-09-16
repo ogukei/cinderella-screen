@@ -67,4 +67,10 @@ void SnapshotTargetAppWindow() {
   capture_facade.SnapshotWindow(window);
 }
 
+void LaunchScreenshotFolder() {
+  auto& winrt_context = core::WinRTContext::Instance();
+  auto& capture_facade = imascs::capture::CaptureFacade::Instance(winrt_context);
+  capture_facade.LaunchScreenshotFolder();
+}
+
 }  // namespace imascs
