@@ -35,7 +35,7 @@ set_target_properties(${PROJECT_NAME} PROPERTIES LINK_FLAGS
 # version
 set(UI_VERSION_MAJOR "0")
 set(UI_VERSION_MINOR "0")
-set(UI_VERSION_PATCH "1")
+set(UI_VERSION_PATCH "2")
 set(UI_VERSION "${UI_VERSION_MAJOR}.${UI_VERSION_MINOR}.${UI_VERSION_PATCH}")
 
 # manifest authoring
