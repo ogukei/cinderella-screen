@@ -13,4 +13,7 @@ void MakeTargetAppForeground();
 void MakeTargetAppBackground();
 void MakeTargetAppDefault();
 
+void SnapshotTargetAppWindow();
+void LaunchScreenshotFolder();
+
 }  // namespace imascs

@@ -30,10 +30,17 @@ IDC_NOTIFICATIONICON MENU
 BEGIN
     POPUP "&Menu"
     BEGIN
-	    MENUITEM "Fullscreen",        IDM_ACTION1
+      MENUITEM "Fullscreen",        IDM_ACTION1
       MENUITEM "Desktop Wallpaper", IDM_ACTION2
       MENUITEM "Default",           IDM_ACTION3
-		MENUITEM SEPARATOR
-        MENUITEM "E&xit",           IDM_EXIT
+    MENUITEM SEPARATOR
+      MENUITEM "Screenshot",        IDM_ACTION4
+    MENUITEM SEPARATOR
+      MENUITEM "E&xit",             IDM_EXIT
+    END
+
+    POPUP "&Help"
+    BEGIN
+      MENUITEM "Open Screenshots Folder",  IDM_HELP1
     END
 END
