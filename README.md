@@ -7,10 +7,13 @@
 1. [Releases](https://github.com/ogukei/cinderella-screen/releases) から `imascs.exe.zip` をダウンロード
 1. `imascs.exe` を実行
 1. Fullscreen (F11) でフルスクリーンに変更
-3. Desktop Wallpaper (F10) で壁紙モードに変更
-4. Default (F9) で通常モードに変更
+1. Desktop Wallpaper (F10) でデスクトップ壁紙モードに変更
+1. Default (F9) で通常モードに変更
+1. Screenshot (F12) でスクリーンショット
 
 F9もしくはAlt+Tabでフルスクリーンから抜け出せます
+
+スクリーンショットは `C:/Users/<User>/Pictures/Screenshots` に保存されます
 
 ## 開発
 1. Download [VSCode](https://code.visualstudio.com/)
