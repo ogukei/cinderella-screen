@@ -2,6 +2,13 @@
 #pragma once
 
 #include <memory>
+#include <optional>
+
+#ifndef UNICODE
+#define UNICODE
+#endif
+#define NOMINMAX
+#include <windows.h>
 
 #include "winrt_base.hpp"
 #include <winrt/Windows.Foundation.h>

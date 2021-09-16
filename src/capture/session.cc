@@ -38,6 +38,7 @@ void CaptureSession::Initialize(const std::unique_ptr<CaptureContext>& context, 
   session_ = frame_pool_.CreateCaptureSession(item_);
   frame_pool_.FrameArrived({ this, &CaptureSession::OnFrameArrived });
   device_context_ = context->D3D11DeviceContext();
+  session_.IsCursorCaptureEnabled(false);
   //
   session_.StartCapture();
 }
