@@ -29,6 +29,7 @@ class CaptureContext {
 
  public:
   explicit CaptureContext(const imascs::core::WinRTContext& winrt_context);
+  CaptureContext(const CaptureContext&) = delete;
 
   void Initialize();
 

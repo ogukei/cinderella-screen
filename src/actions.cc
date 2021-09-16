@@ -28,6 +28,7 @@ void MakeTargetAppFullscreen() {
   if (window == NULL) return;
   ConfigureBorderless(window);
   ConfigureFullscreen(window);
+  SetForegroundWindow(window);
 }
 
 void MakeTargetAppBackground() {
@@ -49,6 +50,7 @@ void MakeTargetAppDefault() {
   ConfigureBorderless(window);
   ConfigureDefaultWindow(window);
   ConfigureDefaultBorder(window);
+  SetForegroundWindow(window);
 }
 
 void SnapshotTargetAppWindow() {

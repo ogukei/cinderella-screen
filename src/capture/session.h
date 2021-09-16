@@ -27,6 +27,7 @@ class CaptureSession {
 
  public:
   CaptureSession();
+  CaptureSession(const CaptureSession&) = delete;
 
   void Initialize(const std::unique_ptr<CaptureContext>& context, HWND hwnd);
   void OnFrameArrived(

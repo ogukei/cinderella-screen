@@ -15,6 +15,7 @@
 #include "actions.h"
 #include "hotkeys.h"
 #include "window_helper.h"
+#include "window_tray_icon.h"
 #include "ui.h"
 
 #define WMAPP_NOTIFYCALLBACK (WM_APP + 1)
@@ -74,17 +75,15 @@ static bool DispatchCommandActions(HWND hwnd, WORD word) {
 }
 
 LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam) {
-  static const GUID guid = 
-      {0xe1e78020, 0x8952, 0x4227, {0xb8, 0xf3, 0xd2, 0x4f, 0xd4, 0xf6, 0x5b, 0x6c}};
   switch (uMsg) {
   case WM_CREATE:
-    imascs::RegisterTrayIcon(g_hInstance, hwnd, guid,
-        WMAPP_NOTIFYCALLBACK, MAKEINTRESOURCE(IDI_ICON1), IMASCS_TRAY_TOOLTIP);
+    imascs::WindowTrayIcon::Instance().AddToSystemTray(g_hInstance,
+      hwnd, WMAPP_NOTIFYCALLBACK, MAKEINTRESOURCE(IDI_ICON1), IMASCS_TRAY_TOOLTIP);
     imascs::SetupUI(g_hInstance, hwnd);
     imascs::ConfigureGlobalHotkeys();
     return 0;
   case WM_DESTROY:
-    imascs::UnregisterTrayIcon(guid);
+    imascs::WindowTrayIcon::Instance().RemoveFromSystemTray();
     PostQuitMessage(0);
     return 0;
   case WM_COMMAND:

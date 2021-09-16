@@ -10,8 +10,8 @@
 #include "context.h"
 #include "capture_item.h"
 
-#include "surface_direct3d11.hpp"
 #include "completion_source.hpp"
+#include "dxgi_interface.hpp"
 
 namespace imascs {
 namespace capture {
@@ -19,7 +19,8 @@ namespace capture {
 CaptureSnapshot::CaptureSnapshot() {
 }
 
-winrt::Windows::Graphics::DirectX::Direct3D11::IDirect3DSurface CaptureSnapshot::Take(const std::unique_ptr<CaptureContext>& context, HWND hwnd) {
+winrt::Windows::Foundation::IAsyncOperation<winrt::Windows::Graphics::DirectX::Direct3D11::IDirect3DSurface>
+CaptureSnapshot::TakeAsync(const std::unique_ptr<CaptureContext>& context, HWND hwnd) {
   auto item = CreateCaptureItemForWindow(hwnd);
   auto format = winrt::Windows::Graphics::DirectX::DirectXPixelFormat::B8G8R8A8UIntNormalized;
   auto frame_pool = winrt::Windows::Graphics::Capture::Direct3D11CaptureFramePool::CreateFreeThreaded(
@@ -55,9 +56,7 @@ winrt::Windows::Graphics::DirectX::Direct3D11::IDirect3DSurface CaptureSnapshot:
     completion.set(result);
   });
   session.StartCapture();
-  // 
-  completion.await_ready();
-  return completion.await_resume();
+  return co_await completion;
 }
 
 }  // namespace capture

@@ -21,7 +21,12 @@ add_subdirectory(src/capture)
 
 # compiler options
 target_compile_features(${PROJECT_NAME} PRIVATE cxx_std_17)
-target_link_libraries(${PROJECT_NAME} PRIVATE imascs.core imascs.capture windowsapp D3D11)
+target_link_libraries(${PROJECT_NAME} PRIVATE
+    imascs.core
+    imascs.capture
+    windowsapp
+    Windowscodecs
+    dwmapi)
 
 # UAC requireAdministrator configured via ui.manifest
 set_target_properties(${PROJECT_NAME} PROPERTIES LINK_FLAGS

@@ -26,10 +26,13 @@ namespace capture {
 
 class CaptureContext;
 class CaptureSession;
+class ImageEncode;
 
 class CaptureFacade {
  private:
   std::unique_ptr<CaptureContext> context_;
+  std::unique_ptr<ImageEncode> encode_;
+
   CaptureFacade(const imascs::core::WinRTContext& context);
 
  public:
@@ -37,7 +40,7 @@ class CaptureFacade {
 
   static CaptureFacade& Instance(const imascs::core::WinRTContext& context);
 
-  void SnapshotWindow(HWND hwnd);
+  winrt::fire_and_forget SnapshotWindow(HWND hwnd);
 };
 
 }  // namespace capture

@@ -29,6 +29,7 @@ static bool IsTargetWindowActive() {
 static void DispatchActions(DWORD vkCode) {
   switch (vkCode) {
   case VK_F12:
+    std::cout << "Snapshot" << std::endl;
     SnapshotTargetAppWindow();
     break;
   case VK_F11:

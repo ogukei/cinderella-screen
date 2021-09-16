@@ -22,8 +22,10 @@ class CaptureSnapshot {
 
  public:
   CaptureSnapshot();
+  CaptureSnapshot(const CaptureSnapshot&) = delete;
 
-  winrt::Windows::Graphics::DirectX::Direct3D11::IDirect3DSurface Take(const std::unique_ptr<CaptureContext>& context, HWND hwnd);
+  winrt::Windows::Foundation::IAsyncOperation<winrt::Windows::Graphics::DirectX::Direct3D11::IDirect3DSurface>
+  TakeAsync(const std::unique_ptr<CaptureContext>& context, HWND hwnd);
 };
 
 }  // namespace capture

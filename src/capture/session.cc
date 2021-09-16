@@ -9,7 +9,7 @@
 #include "context.h"
 #include "capture_item.h"
 
-#include "surface_direct3d11.hpp"
+#include "dxgi_interface.hpp"
 
 namespace imascs {
 namespace capture {
