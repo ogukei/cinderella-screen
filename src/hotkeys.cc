@@ -43,7 +43,7 @@ static void DispatchActions(DWORD vkCode) {
   }
 }
 
-LRESULT CALLBACK HookProc(int nCode, WPARAM wParam, LPARAM lParam) {
+LRESULT CALLBACK HotkeysHookProc(int nCode, WPARAM wParam, LPARAM lParam) {
   LPKBDLLHOOKSTRUCT hook = (LPKBDLLHOOKSTRUCT)lParam;
   if (wParam == WM_KEYDOWN && nCode == HC_ACTION) {
     switch (hook->vkCode) {
@@ -61,7 +61,7 @@ LRESULT CALLBACK HookProc(int nCode, WPARAM wParam, LPARAM lParam) {
 }
 
 void ConfigureGlobalHotkeys() {
-  SetWindowsHookEx(WH_KEYBOARD_LL, HookProc, NULL, 0);
+  SetWindowsHookEx(WH_KEYBOARD_LL, HotkeysHookProc, NULL, 0);
 }
 
 }  // namespace imascs

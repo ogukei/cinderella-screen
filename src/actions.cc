@@ -6,6 +6,7 @@
 #include "defines.hpp"
 #include "window_helper.h"
 #include "fullscreen.h"
+#include "app_state.h"
 
 #include "core/winrt_context.h"
 #include "capture/capture.h"
@@ -31,9 +32,14 @@ void MakeTargetAppFullscreen() {
   if (GetForegroundWindow() != window) {
     SetForegroundWindow(window);
   }
+  // hide cursor on idle
+  auto& app_state = AppState::Instance().value();
+  app_state->ActivateIdleCursorWatcher();
 }
 
 void MakeTargetAppBackground() {
+  auto& app_state = AppState::Instance().value();
+  app_state->DeactivateIdleCursorWatcher();
   DWORD pid = FindProcessIDByName(IMASCS_TARGET_PROCESS_NAME);
   if (pid == 0) return;
   HWND window = FindMainWindow(pid);
@@ -44,6 +50,8 @@ void MakeTargetAppBackground() {
 }
 
 void MakeTargetAppDefault() {
+  auto& app_state = AppState::Instance().value();
+  app_state->DeactivateIdleCursorWatcher();
   MakeTargetAppForeground();
   DWORD pid = FindProcessIDByName(IMASCS_TARGET_PROCESS_NAME);
   if (pid == 0) return;
