@@ -2,7 +2,9 @@
 デレステをフルスクリーンにします
 
 ## 免責事項
-Windows Defenderにウイルス/マルウェアと誤認識される可能性があります。キーボードショートカットと自動カーソル非表示のためににSetWindowsHookExAを使っていますが、これが原因で誤認識されている可能性があります。
+Windows Defenderにウイルス・マルウェアとして誤検知されることがあります。
+
+誤検知を回避するには [保護履歴](https://support.microsoft.com/ja-jp/topic/%E4%BF%9D%E8%AD%B7%E5%B1%A5%E6%AD%B4-f1e5fd95-09b4-46d1-b8c7-1059a1e09708) > 許可 を選択します。
 
 ## 使い方
 実行環境はWindows 10を想定しています
