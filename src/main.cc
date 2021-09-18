@@ -17,10 +17,9 @@
 #include "window_helper.h"
 #include "window_tray_icon.h"
 #include "ui.h"
+#include "app_state.h"
 
 #define WMAPP_NOTIFYCALLBACK (WM_APP + 1)
-
-static HINSTANCE g_hInstance;
 
 LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
 
@@ -30,7 +29,7 @@ INT WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 #ifdef _DEBUG
   ConsoleActivationGuard console;
 #endif
-  g_hInstance = hInstance;
+  imascs::AppState::ConfigureInstance(hInstance);
   // create window
   imascs::RegisterWindowClass(hInstance, 
       IMASCS_WINDOW_CLASS_NAME,
@@ -81,13 +80,18 @@ static bool DispatchCommandActions(HWND hwnd, WORD word) {
 LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam) {
   switch (uMsg) {
   case WM_CREATE:
-    imascs::WindowTrayIcon::Instance().AddToSystemTray(g_hInstance,
+  {
+    auto& app_state = imascs::AppState::Instance().value();
+    app_state->ConfigureHWnd(hwnd);
+    imascs::WindowTrayIcon::Instance().AddToSystemTray(app_state->HInstance(),
       hwnd, WMAPP_NOTIFYCALLBACK, MAKEINTRESOURCE(IDI_ICON1), IMASCS_TRAY_TOOLTIP);
-    imascs::SetupUI(g_hInstance, hwnd);
+    imascs::SetupUI(app_state->HInstance(), hwnd);
     imascs::ConfigureGlobalHotkeys();
     return 0;
+  }
   case WM_DESTROY:
     imascs::WindowTrayIcon::Instance().RemoveFromSystemTray();
+    imascs::AppState::DestroyInstance();
     PostQuitMessage(0);
     return 0;
   case WM_COMMAND:
@@ -98,8 +102,9 @@ LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam) 
   case WMAPP_NOTIFYCALLBACK:
     switch (LOWORD(lParam)) {
     case WM_CONTEXTMENU:
+      auto& app_state = imascs::AppState::Instance().value();
       POINT pt = {LOWORD(wParam), HIWORD(wParam)};
-      imascs::ShowContextMenu(g_hInstance, hwnd, MAKEINTRESOURCE(IDC_NOTIFICATIONICON), pt);
+      imascs::ShowContextMenu(app_state->HInstance(), hwnd, MAKEINTRESOURCE(IDC_NOTIFICATIONICON), pt);
       return 0;
     }
     break;

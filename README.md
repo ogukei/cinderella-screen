@@ -15,6 +15,24 @@ F9もしくはAlt+Tabでフルスクリーンから抜け出せます
 
 スクリーンショットは `C:/Users/<User>/Pictures/Screenshots` に保存されます
 
+## 機能
+* 軽量・シンプル
+    * 実行ファイルは150KB程度です
+* フルスクリーン化
+    * 4Kモニターに対応しています
+* デスクトップ壁紙モード
+    * デレステのウィンドウをデスクトップ背景に配置します
+* キーショートカット
+    * F11を押してフルスクリーンに即座に切り替えることができます
+* 自動カーソル非表示
+    * フルスクリーン時にカーソルを自動的に非表示にします
+* スクリーンショット
+    * PNG形式の画像を保存できます
+* ワイドモニター対応
+    * 16:9モニター以外でも動作します
+* 縦画面対応
+    * 縦画面ゲームモードでもフルスクリーンに設定できます
+
 ## 開発
 1. Download [VSCode](https://code.visualstudio.com/)
 1. Install [VSCode C++ extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools)
