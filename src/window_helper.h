@@ -11,7 +11,9 @@ namespace imascs {
 
 DWORD FindProcessIDByName(LPCWSTR name);
 HWND FindMainWindow(DWORD pid);
-bool FetchMonitorRect(HWND hwnd, RECT* out);
+bool FetchWindowMonitorRect(HWND hwnd, RECT* out);
+bool FetchMonitorRect(HMONITOR hMonitor, RECT* out);
+
 void ConfigureBorderless(HWND hwnd);
 void ConfigureDefaultBorder(HWND hwnd);
 

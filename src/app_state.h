@@ -30,15 +30,17 @@ class AppState {
   AppState(const AppState&) = delete;
 
   static void ConfigureInstance(HINSTANCE hInstance) {
-    State() = std::make_unique<AppState>(hInstance);
+    auto& state = State();
+    state = std::make_unique<AppState>(hInstance);
   }
 
   static void DestroyInstance() {
-    State() = std::nullopt;
+    auto& state = State();
+    state = std::nullopt;
   }
 
   static const std::optional<std::unique_ptr<AppState>>& Instance() {
-    return AppState::State();
+    return State();
   }
 
   HINSTANCE HInstance() const { return hInstance_; }
