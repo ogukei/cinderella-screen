@@ -53,22 +53,34 @@ static std::optional<SIZE> WindowClientSize(HWND hwnd) {
   return size;
 }
 
-static HMONITOR WindowMonitor(HWND hwnd) {
+static HMONITOR InitialWindowMonitor(HWND hwnd) {
   return MonitorFromWindow(hwnd, MONITOR_DEFAULTTONEAREST);
 }
 
 WindowResizeConstraint::WindowResizeConstraint(HWND hwnd)
-  : WindowResizeConstraint(WindowMonitor(hwnd), hwnd) {
+  : WindowResizeConstraint(InitialWindowMonitor(hwnd), hwnd) {
 }
 
-WindowResizeConstraint::WindowResizeConstraint(HMONITOR monitor, HWND hwnd) {
-  SIZE monitor_size = MonitorSize(monitor).value();
+static SIZE InitialAspect(HWND hwnd) {
   SIZE client_size = WindowClientSize(hwnd).value();
   bool is_landscape = client_size.cx >= client_size.cy;
   SIZE aspect_ratio = (is_landscape) ? SIZE{16, 9} : SIZE{9, 16};
+  return aspect_ratio;
+}
+
+static SIZE InitialFrameSize(HMONITOR monitor) {
+  SIZE monitor_size = MonitorSize(monitor).value();
+  return monitor_size;
+}
+
+WindowResizeConstraint::WindowResizeConstraint(HMONITOR monitor, HWND hwnd)
+  : WindowResizeConstraint(InitialFrameSize(monitor), InitialAspect(hwnd)) {
+}
+
+WindowResizeConstraint::WindowResizeConstraint(const SIZE& frame_size, const SIZE& aspect_ratio) {
+  desired_size_ = frame_size;
+  frame_size_ = frame_size;
   aspect_ratio_ = aspect_ratio;
-  desired_size_ = monitor_size;
-  frame_size_ = monitor_size;
   resize_mode_ = WindowResizeMode::fullscreen;
   alignment_ = WindowHorizontalAlignment::center;
 }

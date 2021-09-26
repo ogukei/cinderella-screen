@@ -36,6 +36,7 @@ class WindowResizeConstraint {
  public:
   explicit WindowResizeConstraint(HWND hwnd);
   explicit WindowResizeConstraint(HMONITOR monitor, HWND hwnd);
+  explicit WindowResizeConstraint(const SIZE& frame_size, const SIZE& aspect);
 
   void SetHorizontalAlignment(WindowHorizontalAlignment alignment) { alignment_ = alignment; }
   void SetResizeMode(WindowResizeMode resize_mode) { resize_mode_ = resize_mode; }
