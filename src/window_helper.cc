@@ -54,8 +54,17 @@ void ConfigureDefaultBorder(HWND hwnd) {
   SetWindowLong(hwnd, GWL_STYLE, style);
 }
 
-bool FetchMonitorRect(HWND hwnd, RECT* rectOut) {
+bool FetchWindowMonitorRect(HWND hwnd, RECT* rectOut) {
   HMONITOR monitor = MonitorFromWindow(hwnd, MONITOR_DEFAULTTONEAREST);
+  MONITORINFO info = {sizeof(info)};
+  if (GetMonitorInfo(monitor, &info)) {
+    *rectOut = info.rcMonitor;
+    return true;
+  }
+  return false;
+}
+
+bool FetchMonitorRect(HMONITOR monitor, RECT* rectOut) {
   MONITORINFO info = {sizeof(info)};
   if (GetMonitorInfo(monitor, &info)) {
     *rectOut = info.rcMonitor;
