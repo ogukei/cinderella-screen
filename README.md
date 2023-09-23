@@ -43,7 +43,7 @@ F9もしくはAlt+Tabでフルスクリーンから抜け出せます
 1. Install [VSCode C++ extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools)
 1. Install Microsoft Visual C++ (MSVC) compiler toolset via Build Tools for Visual Studio 2019
     * See https://code.visualstudio.com/docs/cpp/config-msvc
-    * From the Visual Studio [Downloads](https://visualstudio.microsoft.com/downloads/#remote-tools-for-visual-studio-2022) page, scroll down until you see Tools for Visual Studio under the All Downloads section and select the download for Build Tools for Visual Studio 2022.
+    * From the Visual Studio [Downloads](https://visualstudio.microsoft.com/ja/downloads/#build-tools-for-visual-studio-2022) page, scroll down until you see Tools for Visual Studio under the All Downloads section and select the download for Build Tools for Visual Studio 2022.
 1. Install Windows 10 SDK 10.0.19041.0 via Build Tools for Visual Studio 2019
 1. Open Developer PowerShell for VS 2019
 1. Run the following commands
