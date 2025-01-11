@@ -53,7 +53,7 @@ F9もしくはAlt+Tabでフルスクリーンから抜け出せます
 cd <this-repository-folder>
 mkdir build
 cd build
-cmake .. -G "Visual Studio 16 2022" -A x64
+cmake .. -G "Visual Studio 16 2019" -A x64
 cmake --build .
 Debug/imascs.exe
 ```
