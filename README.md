@@ -45,7 +45,7 @@ F9もしくはAlt+Tabでフルスクリーンから抜け出せます
     * See https://code.visualstudio.com/docs/cpp/config-msvc
     * From the Visual Studio [Downloads](https://visualstudio.microsoft.com/ja/downloads/#build-tools-for-visual-studio-2022) page, scroll down until you see Tools for Visual Studio under the All Downloads section and select the download for Build Tools for Visual Studio 2022.
 1. Install Windows 10 SDK 10.0.19041.0 via Build Tools for Visual Studio 2022
-1. Install CMake tools for Windows
+1. Install CMake tools for Windows via Build Tools for Visual Studio 2022
     * https://learn.microsoft.com/en-us/cpp/build/cmake-projects-in-visual-studio?view=msvc-170
 1. Open Developer PowerShell for VS 2022
 1. Run the following commands
