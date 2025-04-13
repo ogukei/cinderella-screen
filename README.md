@@ -13,6 +13,7 @@ Windows Defenderにウイルス・マルウェアとして誤検知されるこ�
 1. `imascs.exe` を実行
 1. Fullscreen (F11) でフルスクリーンに変更
 1. Desktop Wallpaper (F10) でデスクトップ壁紙モードに変更
+2. Picture in Picture でピクチャ・イン・ピクチャモードに変更
 1. Default (F9) で通常モードに変更
 1. Screenshot (F12) でスクリーンショット
 
