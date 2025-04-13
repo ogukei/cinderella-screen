@@ -7,6 +7,7 @@
 #define IDM_ACTION2 122
 #define IDM_ACTION3 123
 #define IDM_ACTION4 124
+#define IDM_ACTION5 125
 #define IDM_EXIT 140
 
 #define IDM_HELP1 151
