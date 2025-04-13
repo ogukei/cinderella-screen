@@ -20,7 +20,8 @@ namespace imascs {
 SIZE GetUIBoundingBox() {
   int cx = UI_BUTTON_MARGIN_X * 2 + UI_BUTTON_WIDTH;
   cx += UI_WINDOW_MARGIN_X;
-  int cy = UI_BUTTON_MARGIN_Y * 5 + UI_BUTTON_HEIGHT * 4;
+  int num_buttons = 5;
+  int cy = UI_BUTTON_MARGIN_Y * (num_buttons + 1) + UI_BUTTON_HEIGHT * num_buttons;
   cy += UI_VERTICAL_SPACER;
   RECT rect = {0, 0, cx, cy};
   AdjustWindowRectEx(&rect, GetOverlappedWindowStyle(), true, 0);
@@ -38,6 +39,10 @@ void SetupUI(HINSTANCE hInstance, HWND hwnd) {
   //
   MakeButton(hInstance, hwnd, x, y, UI_BUTTON_WIDTH, UI_BUTTON_HEIGHT,
       L"Desktop Wallpaper (F10)", (HMENU)IDM_ACTION2);
+  y += UI_BUTTON_HEIGHT + UI_BUTTON_MARGIN_Y;
+  //
+  MakeButton(hInstance, hwnd, x, y, UI_BUTTON_WIDTH, UI_BUTTON_HEIGHT,
+    L"Picture in Picture", (HMENU)IDM_ACTION5);
   y += UI_BUTTON_HEIGHT + UI_BUTTON_MARGIN_Y;
   //
   MakeButton(hInstance, hwnd, x, y, UI_BUTTON_WIDTH, UI_BUTTON_HEIGHT,

@@ -68,6 +68,9 @@ static bool DispatchCommandActions(HWND hwnd, WORD word) {
   case IDM_ACTION4:
     imascs::SnapshotTargetAppWindow();
     break;
+  case IDM_ACTION5:
+    imascs::MakeTargetAppPictureInPicture();
+    break;
   case IDM_HELP1:
     imascs::LaunchScreenshotFolder();
     break;

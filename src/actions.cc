@@ -1,4 +1,3 @@
-
 #include "actions.h"
 
 #include <iostream>
@@ -49,6 +48,18 @@ void MakeTargetAppBackground() {
   ConfigureWallpaperWindow(window);
 }
 
+void MakeTargetAppPictureInPicture() {
+  auto& app_state = AppState::Instance().value();
+  app_state->DeactivateIdleCursorWatcher();
+  MakeTargetAppForeground();
+  DWORD pid = FindProcessIDByName(IMASCS_TARGET_PROCESS_NAME);
+  if (pid == 0) return;
+  HWND target_window = FindMainWindow(pid);
+  if (target_window == NULL) return;
+  // Make window TOPMOST
+  SetWindowPos(target_window, HWND_TOPMOST, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE | SWP_NOACTIVATE);
+}
+
 void MakeTargetAppDefault() {
   auto& app_state = AppState::Instance().value();
   app_state->DeactivateIdleCursorWatcher();
@@ -57,9 +68,13 @@ void MakeTargetAppDefault() {
   if (pid == 0) return;
   HWND window = FindMainWindow(pid);
   if (window == NULL) return;
+  // Remove the TOPMOST setting
+  SetWindowPos(window, HWND_NOTOPMOST, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE | SWP_NOACTIVATE);
+  // Restore other configurations
   ConfigureBorderless(window);
   ConfigureDefaultWindow(window);
   ConfigureDefaultBorder(window);
+  // Bring the window to the foreground if it's not already
   if (GetForegroundWindow() != window) {
     SetForegroundWindow(window);
   }

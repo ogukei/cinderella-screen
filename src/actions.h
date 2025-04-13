@@ -11,6 +11,7 @@ namespace imascs {
 void MakeTargetAppFullscreen();
 void MakeTargetAppForeground();
 void MakeTargetAppBackground();
+void MakeTargetAppPictureInPicture();
 void MakeTargetAppDefault();
 
 void SnapshotTargetAppWindow();
